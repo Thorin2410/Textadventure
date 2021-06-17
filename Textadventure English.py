@@ -32,6 +32,17 @@ class Character:
     def die(self):
         print(self.name + " died")
 
+class Zombie:
+    def __init__(self):
+        Character.__init__(self, 60, 23, "Zombie")
+
+class Skeleton:
+    def __init__(self):
+        Character.__init__(self, 35, 13, "Skeleton")
+
+class Mage(Character):
+    def __init__(self):
+        Character.__init__(self, 73, 26, "Mage")
 
 class Ghost(Character):
     def __init__(self):
@@ -41,7 +52,7 @@ class Goblin(Character):
     def __init__(self):
         Character.__init__(self, 100, 10, "Goblin")
 
-class Ork(Character):
+class Orc(Character):
     def __init__(self):
         Character.__init__(self, 300, 30, "Orc")
 
@@ -77,9 +88,9 @@ class Field:
         if rand == 0:
             return Field([])
         if rand == 1:
-            return Field([Ork(), Goblin(), Ghost(), Troll()])
+            return Field([Skeleton, Goblin(), Ghost(), Mage()])
         if rand == 2:
-            return Field([Goblin(), Goblin(), Ork(), Ghost(), Troll()])
+            return Field([Goblin(), Skeleton(), Skeleton(), Zombie(), Orc(), Ghost(), Troll(), Mage()])
 
 
 class Map:
@@ -107,7 +118,7 @@ class Map:
 
     def backwards(self):
         if self.x == 0:
-            print("Klippen ... Nein, spring nicht!")
+            print("Cliffs ... don't jump!")
         else:
             self.x = self.x - 1
 
